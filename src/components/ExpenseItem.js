@@ -1,5 +1,6 @@
 import React from 'react';
 import './ExpenseItem.css';
+import ExpenseDate from './ExpenseDate';
 
 const ExpenseItem = ({ title, price: propsPrice, date }) => {
   // console.log(props);
@@ -27,7 +28,7 @@ const ExpenseItem = ({ title, price: propsPrice, date }) => {
   const formattedPrice = new Intl.NumberFormat('ko-KR').format(propsPrice);
   return (
     <div className='expense-item'>
-      <div>{makeFormattedDate()}</div>
+      <ExpenseDate date={date} />
       <div className='expense-itemdescription'>
         <h2>{title}</h2>
         <div className='expense-itemprice'>{formattedPrice}원</div>
