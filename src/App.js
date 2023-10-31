@@ -1,7 +1,6 @@
 import React from 'react';
 import './App.css';
-import ExpenseItem from './components/ExpenseItem';
-import NoName from './NoName';
+import Expenses from './components/Expenses';
 
 const App = () => {
   //지출 항목 객체 배열
@@ -26,21 +25,7 @@ const App = () => {
 
   return (
     <>
-      <ExpenseItem
-        title={expenses[0].title}
-        price={expenses[0].price}
-        date={expenses[0].date}
-      />
-      <ExpenseItem
-        title={expenses[1].title}
-        price={expenses[1].price}
-        date={expenses[1].date}
-      />
-      <ExpenseItem
-        title={expenses[2].title}
-        price={expenses[2].price}
-        date={expenses[2].date}
-      />
+      <Expenses items={expenses} />
     </>
   );
 };
