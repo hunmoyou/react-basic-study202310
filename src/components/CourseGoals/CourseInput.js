@@ -29,13 +29,9 @@ const CourseInput = ({ onAdd }) => {
 
   return (
     <form onSubmit={formSubmitHandler}>
-      <div className='form-control'>
+      <div className={`form-control ${!isValid ? 'invalid' : ''}`}>
         <label>나의 목표</label>
         <input
-          style={{
-            background: isValid ? 'transparent' : 'salmon',
-            borderColor: isValid ? 'black' : 'red',
-          }}
           type='text'
           onChange={textChangeHandler}
           value={enteredText}
