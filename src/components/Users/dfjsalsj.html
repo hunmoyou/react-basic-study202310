@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Document</title>
+    <style>
+      header,
+      footer {
+        height: 100px;
+      }
+
+      body {
+        background-color: black;
+        color: white;
+      }
+
+      .image-box {
+        height: 200px;
+        overflow: hidden;
+        margin-bottom: 70px;
+      }
+
+      .image-thumbnail {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+      }
+
+      /* .poster {
+            height: 200px;
+            background-color: white;
+            margin-bottom: 70px;
+        }
+
+        .poster img {
+            height: 200px;
+            width: 100%;
+        } */
+
+      .detailposter,
+      .detailposter img {
+        height: 300px;
+        width: 250px;
+        margin-right: 50px;
+      }
+
+      .detail table {
+        margin-bottom: 50px;
+      }
+
+      .detail {
+        display: flex;
+        /* width: 100%; */
+        margin-left: 200px;
+        margin-right: 200px;
+        margin-bottom: 50px;
+        border-bottom: 1px solid white;
+        padding-left: 70px;
+        padding-bottom: 100px;
+      }
+
+      /* .div2 {
+            width: 400px;
+            margin-right: 60px;
+        } */
+
+      /* .review {
+            width: 1000px;
+            height: 300px;
+            margin-left: 200px;
+            display: flex;
+            padding: 0px 100px;
+        }
+
+        .prof {
+            padding-right: 100px;
+            border-right: 1px solid white;
+        }
+
+        .hunmo {
+            padding-left: 100px;
+        } */
+
+      .details {
+        width: 200px;
+      }
+
+      .title1 {
+        color: white;
+        font-size: 44px;
+        margin-bottom: 20px;
+        position: relative;
+      }
+
+      .title2 {
+        color: #c7c1ba;
+        font-size: 23px;
+        font-weight: 300;
+        margin-bottom: 15px;
+      }
+
+      .title3 {
+        color: #c7c1ba;
+        font-size: 15px;
+      }
+
+      .table {
+        border-bottom: 1px solid white;
+        width: 100%;
+      }
+
+      textarea {
+        width: 100%;
+        background-color: black;
+        color: white;
+      }
+
+      .table thead {
+        border: 1px solid white;
+      }
+
+      .table-bordered tbody {
+        border-bottom: 1px solid white;
+      }
+
+      /*더보기 줄이기*/
+      .text-wrapper {
+        /* 임의의 넓이 설정 (200px이 넘어갈 경우 텍스트 줄바꿈) */
+        width: 400px;
+      }
+
+      .text {
+        /* 요소의 내용이 영역을 벗어날 경우 그 부분은 숨겨지게 처리 */
+        overflow: hidden;
+        /* 요소의 표시 방법을 -webkit-box로 표시 */
+        display: -webkit-box;
+        /* webkit-box로 표시된 자식 요소들의 배치 방법 결정 (여기서는 수직) */
+        -webkit-box-orient: vertical;
+        /* 요소 내 텍스트를 지정한 라인수까지만 표시 */
+        -webkit-line-clamp: 2;
+        /* 텍스트 양쪽정렬 */
+        text-align: justify;
+      }
+
+      .more-text {
+        /* 글씨 크기,색상 지정 */
+        font-size: 16px;
+        color: red;
+
+        /* 마우스 포인트가 올라갔을 때 커서 모양을 포인터로 변경 */
+        cursor: pointer;
+      }
+
+      .less-text {
+        /* 글씨 크기,색상 지정 */
+        font-size: 16px;
+        color: red;
+        /* 마우스 포인트가 올라갔을 때 커서 모양을 포인터로 변경 */
+        cursor: pointer;
+        /* 줄이기 버튼 (처음에는 안보이게) */
+        display: none;
+      }
+
+      .main {
+      }
+
+      /* slider */
+      .slider__wrap {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      /* 이미지 보이는 부분 */
+      .slider__img {
+        position: relative;
+        width: 600px;
+        height: 400px;
+        overflow: hidden;
+      }
+
+      /* 이미지 감싸고 있는 부모 : 움직이는 부분 */
+      .slider__inner {
+        display: flex;
+        flex-wrap: wrap;
+        /* 총 이미지 6개 */
+        width: 3600px;
+        height: 400px;
+      }
+
+      /* 개별적인 이미지 */
+      .slider {
+        position: relative;
+        width: 600px;
+        height: 400px;
+      }
+
+      .slider img {
+        width: 100%;
+      }
+
+      .slider::before {
+        position: absolute;
+        left: 5px;
+        top: 5px;
+        background: rgba(0, 0, 0, 0.4);
+        color: #fff;
+        padding: 5px 10px;
+      }
+
+      .slider:nth-child(1)::before {
+        content: '이미지1';
+      }
+
+      .slider:nth-child(2)::before {
+        content: '이미지2';
+      }
+
+      .slider:nth-child(3)::before {
+        content: '이미지3';
+      }
+
+      .slider:nth-child(4)::before {
+        content: '이미지4';
+      }
+
+      .slider:nth-child(5)::before {
+        content: '이미지5';
+      }
+
+      .slider:nth-child(6)::before {
+        content: '이미지1';
+      }
+
+      @media (max-width: 800px) {
+        .slider__img {
+          width: 400px;
+          height: 300px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header></header>
+    <div class="image-box">
+      <img
+        class="image-thumbnail"
+        src="https://img.cgv.co.kr/Movie/Thumbnail/Poster/000087/87407/87407_320.jpg"
+      />
+    </div>
+    <!-- <div class="poster"><img src="https://img.cgv.co.kr/Movie/Thumbnail/Poster/000087/87407/87407_320.jpg"> -->
+
+    <div class="detail">
+      <div class="detailposter">
+        <img
+          src="https://img.cgv.co.kr/Movie/Thumbnail/Poster/000087/87407/87407_320.jpg"
+        />
+      </div>
+      <div class="div2">
+        <div class="details">
+          <!-- 영화명 -->
+          <p class="title1">30일</p>
+          <!-- 영화명(영문) -->
+          <p class="title2">Love Reset</p>
+          <!-- 개봉 -->
+          <p class="title3">개봉 &emsp; &emsp; 2023.10.3</p>
+          <!-- 국가 -->
+          <p class="title3">국가 &emsp; &emsp; 한국</p>
+          <!-- 등급 -->
+          <p class="title3">등급 &emsp; &emsp; 12세이상관람가</p>
+          <!-- 장르 -->
+          <p class="title3">장르 &emsp; &emsp; 코미디</p>
+          <!-- 러닝타임 -->
+          <p class="title3">러닝타임 &nbsp; 119분</p>
+        </div>
+
+        <div class="content">
+          <h4>줄거리</h4>
+          <div class="text-wrapper">
+            <span class="text">
+              “완벽한 저에게 신은 저 여자를 던지셨죠” 지성과 외모 그리고
+              찌질함까지 타고난, '정열'(강하늘). “모기 같은 존재죠. 존재의
+              이유를 모르겠는?”능력과 커리어 그리고 똘기까지 타고난,
+              '나라'(정소민). 영화처럼 만나 영화같은 사랑을 했지만서로의
+              찌질함과 똘기를 견디다 못해 마침내 완벽한 남남이 되기로
+              한다.그러나!완벽한 이별을 딱 D-30 앞둔 이들에게 찾아온 것은
+              줄거리끝 “완벽한 저에게 신은 저 여자를 던지셨죠” 지성과 외모
+              그리고 찌질함까지 타고난, '정열'(강하늘). “모기 같은 존재죠.
+              존재의 이유를 모르겠는?”능력과 커리어 그리고 똘기까지 타고난,
+              '나라'(정소민). 영화처럼 만나 영화같은 사랑을 했지만서로의
+              찌질함과 똘기를 견디다 못해 마침내 완벽한 남남이 되기로
+              한다.그러나!완벽한 이별을 딱 D-30 앞둔 이들에게 찾아온 것은
+              줄거리끝
+            </span>
+            <!-- 더보기, 줄이기 텍스트 -->
+            <span class="more-text">더보기</span>
+            <span class="less-text">줄이기</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <main id="main">
+      <section id="sliderType01">
+        <div class="slider__wrap">
+          <div class="slider__img">
+            <div class="slider__inner">
+              <div class="slider">
+                <img
+                  src="https://img.cgv.co.kr/Movie/Thumbnail/StillCut/000087/87407/87407220141_727.jpg"
+                  alt="이미지1"
+                />
+              </div>
+              <div class="slider">
+                <img
+                  src="https://img.cgv.co.kr/Movie/Thumbnail/StillCut/000087/87407/87407220485_727.jpg"
+                  alt="이미지2"
+                />
+              </div>
+              <div class="slider">
+                <img
+                  src="https://img.cgv.co.kr/Movie/Thumbnail/StillCut/000087/87407/87407220407_727.jpg"
+                  alt="이미지3"
+                />
+              </div>
+              <div class="slider">
+                <img
+                  src="https://img.cgv.co.kr/Movie/Thumbnail/StillCut/000087/87407/87407220330_727.jpg"
+                  alt="이미지4"
+                />
+              </div>
+              <div class="slider">
+                <img
+                  src="https://img.cgv.co.kr/Movie/Thumbnail/StillCut/000087/87407/87407220329_727.jpg"
+                  alt="이미지5"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 content-wrap">
+          <form method="post">
+            <table class="table">
+              <tbody class="t-control">
+                <tr>
+                  <td>유훈모</td>
+                </tr>
+                <tr>
+                  <td>
+                    <textarea
+                      placeholder="내용을 입력하세요."
+                      class="form-control"
+                      rows="7"
+                      name="content"
+                    ></textarea>
+                  </td>
+                  <td>
+                    <button
+                      type="submit"
+                      class="btn"
+                    >
+                      등록
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </form>
+
+          <table class="table table-bordered">
+            <tbody>
+              <c:forEach
+                var="vo"
+                items="${boardList}"
+              >
+                <tr>
+                  <td>1</td>
+                </tr>
+                <tr>
+                  <td>유훈모</td>
+                </tr>
+                <tr>
+                  <td>남자친구어쩌구</td>
+                </tr>
+                <tr>
+                  <td>23.11.03</td>
+                </tr>
+              </c:forEach>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <footer></footer>
+  </body>
+  <script>
+    // 코드에 필요한 요소들 변수에 할당
+    const textWrapper = document.querySelector('.text-wrapper');
+    const text = document.querySelector('.text');
+    const moreText = document.querySelector('.more-text');
+    const lessText = document.querySelector('.less-text');
+
+    // 더보기 텍스트 클릭시 이벤트
+    moreText.addEventListener('click', () => {
+      moreText.style.display = 'none';
+      lessText.style.display = 'inline-block';
+      text.style.display = 'inline-block';
+    });
+
+    // 줄이기 텍스트 클릭시 이벤트
+    lessText.addEventListener('click', () => {
+      lessText.style.display = 'none';
+      moreText.style.display = 'inline-block';
+      text.style.display = '-webkit-box';
+    });
+
+    const sliderWrap = document.querySelector('.slider__wrap');
+    const sliderImg = document.querySelector('.slider__img'); // 보여지는 영역
+    const sliderInner = document.querySelector('.slider__inner'); // 움직이는 영역
+    const slider = document.querySelectorAll('.slider'); // 각각의 이미지
+
+    let currentIndex = 0; // 현재 보이는 이미지
+    let sliderCount = slider.length; // 이미지 갯수
+    let sliderWidth = sliderImg.offsetWidth; // 이미지 가로값
+    let sliderClone = sliderInner.firstElementChild.cloneNode(true); // 첫번째 이미지 복사
+    sliderInner.appendChild(sliderClone); // 첫번째 이미지를 마지막에 넣어줌
+
+    function sliderEffect() {
+      currentIndex++;
+      sliderInner.style.transition = 'all 0.6s';
+
+      sliderInner.style.transform =
+        'translateX(-' + sliderWidth * currentIndex + 'px)';
+
+      // sliderInner.style.transform = "translateX(-600px)";      600*1
+      // sliderInner.style.transform = "translateX(-1200px)";     600*2
+      // sliderInner.style.transform = "translateX(-1800px)";     600*3
+      // sliderInner.style.transform = "translateX(-2400px)";     600*4
+      // sliderInner.style.transform = "translateX(-3000px)";     600*5
+      // sliderInner.style.transform = "translateX(-3600px)";     600*1
+
+      // 마지막 사진에 위치했을 때
+      if (currentIndex == sliderCount) {
+        setTimeout(() => {
+          sliderInner.style.transition = '0s';
+          sliderInner.style.transform = 'translateX(0px)';
+        }, 700);
+
+        currentIndex = 0;
+      }
+    }
+    setInterval(sliderEffect, 2000);
+  </script>
+</html>
